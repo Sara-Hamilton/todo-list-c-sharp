@@ -14,23 +14,11 @@ namespace ToDoList.Controllers
           return View(allItems);
         }
 
-        // [HttpPost("/items")]
-        // public ActionResult Index()
-        // {
-        //     return View();
-        // }
-
         [HttpGet("/items/new")]
         public ActionResult CreateForm()
         {
             return View();
         }
-
-        // [HttpGet("/items/create/form")]
-        // public ActionResult CreateForm()
-        // {
-        //     return View();
-        // }
 
         [HttpPost("/items")]
         public ActionResult Create()
