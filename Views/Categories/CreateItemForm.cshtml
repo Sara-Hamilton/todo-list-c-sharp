@@ -1,4 +1,6 @@
-<h1>Add a new item to @Model["category"].GetName()</h1>
+@if (@Model != null) {
+  <h1>Add a new item to @Model["category"].GetName()</h1>
+}
 <form action='/items' method='post'>
   <input id='category-id' name='category-id' type='hidden' value='@Model["category"].GetId()'>
   <label for='item-description'>Item description</label>

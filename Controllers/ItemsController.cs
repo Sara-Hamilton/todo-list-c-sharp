@@ -28,27 +28,39 @@ namespace ToDoList.Controllers
         //   return View("Index", allItems);
         // }
 
-        [HttpGet("/items/{id}")]
-        public ActionResult Details(int id)
-        {
-          Item item = Item.Find(id);
-          Dictionary<string, object> model = new Dictionary<string, object>();
-          Category category = Category.Find(item.GetCategoryId());
-          model.Add("item", item);
-          model.Add("category", category);
-          return View(item);
-        }
+        // [HttpGet("/items/{id}")]
+        // public ActionResult Details(int id)
+        // {
+        //   Item item = Item.Find(id);
+        //   Dictionary<string, object> model = new Dictionary<string, object>();
+        //   Category category = Category.Find(item.GetCategoryId());
+        //   model.Add("item", item);
+        //   model.Add("category", category);
+        //   return View(item);
+        // }
 
         [HttpGet("/categories/{categoryId}/items/new")]
         public ActionResult CreateForm(int categoryId)
         {
             Dictionary<string, object> model = new Dictionary<string, object>();
-            Category foundCategory = Category.Find(categoryId);
-            List<Item> allItems = foundCategory.GetItems();
-            model.Add("category", foundCategory);
-            model.Add("items", allItems);
-            return View(model);
+            Category category = Category.Find(categoryId);
+            // List<Item> allItems = foundCategory.GetItems();
+            // model.Add("item", item);
+            // model.Add("category", category);
+            // return View(model);
+            return View(category);
         }
+
+        [HttpGet("/categories/{categoryId}/items/{itemId}")]
+       public ActionResult Details(int categoryId, int itemId)
+       {
+          Item item = Item.Find(itemId);
+          Dictionary<string, object> model = new Dictionary<string, object>();
+          Category category = Category.Find(categoryId);
+          model.Add("item", item);
+          model.Add("category", category);
+          return View(item);
+       }
 
         // [HttpPost("/items/delete")]
         // public ActionResult DeleteAll()
